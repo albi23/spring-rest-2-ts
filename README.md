@@ -13,3 +13,29 @@
     <li>spring-rest2ts-jax-rs   
     <li>spring-rest2ts-swagger
 </ul>
+
+Usage 
+```xml
+        <repository>
+            <id>mvn-repo</id>
+            <url>https://github.com/albi23/spring-rest-2-ts/tree/1.2.6-release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+           .
+           .
+           .
+        <dependencies>
+              ...
+            <dependency>
+                <groupId>com.blue-veery</groupId>
+                <artifactId>spring-rest2ts-jackson</artifactId>
+                <version>1.2.6</version>
+            </dependency>
+              ...
+        </dependencies>
+```
