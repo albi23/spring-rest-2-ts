@@ -1,7 +1,8 @@
 package com.blueveery.springrest2ts.filters;
 
-import java.util.List;
 import org.slf4j.Logger;
+
+import java.util.List;
 
 public class AndFilterOperator extends ComplexFilterOperator {
 

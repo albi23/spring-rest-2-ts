@@ -19,16 +19,16 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
     private static final String FIELD_NAME_HTTP_SERVICE = "httpService";
     private static final String FIELD_NAME_URL_SERVICE = "urlService";
 
-    private TSDecorator injectableDecorator;
-    private TSClass observableClass;
-    private TSClass httpClass;
-    private TSClass httpParamsClass;
-    private TSClass httpHeadersClass;
+    private final TSDecorator injectableDecorator;
+    private final TSClass observableClass;
+    private final TSClass httpClass;
+    private final TSClass httpParamsClass;
+    private final TSClass httpHeadersClass;
     private TSClass urlServiceClass;
-    private TSClass mapOperatorClass;
-    private String[] implementationSpecificFieldNames;
+    private final TSClass mapOperatorClass;
+    private final String[] implementationSpecificFieldNames;
 
-    private boolean useUrlService;
+    private final boolean useUrlService;
 
     public Angular4ImplementationGenerator() {
         this(null);
@@ -152,19 +152,19 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
                 .append(");");
     }
 
-    private boolean isJsonParseRequired(TSMethod method) {
+    protected boolean isJsonParseRequired(TSMethod method) {
         TSType type = method.getType();
         return type != TypeMapper.tsNumber && type != TypeMapper.tsBoolean && type != TypeMapper.tsString && type != TypeMapper.tsVoid;
     }
 
-    private void writeRequestOption(BufferedWriter writer, String requestOption, String requestOptionValue, boolean isOptionDefined) throws IOException {
+    protected void writeRequestOption(BufferedWriter writer, String requestOption, String requestOptionValue, boolean isOptionDefined) throws IOException {
         if (isOptionDefined) {
             writer.write("    const " + requestOption + " = " + requestOptionValue);
             writer.newLine();
         }
     }
 
-    private String composeRequestBody(String requestBody, boolean isRequestBodyDefined, String requestOptions, String httpMethod, boolean isJsonParsingRequired, String[] consumes) {
+    protected String composeRequestBody(String requestBody, boolean isRequestBodyDefined, String requestOptions, String httpMethod, boolean isJsonParsingRequired, String[] consumes) {
         if (isPutOrPostMethod(httpMethod)) {
             if (isRequestBodyDefined) {
                 requestOptions = appendRequestBodyPart(requestBody, requestOptions, isJsonParsingRequired, consumes);
@@ -175,7 +175,7 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
         return requestOptions;
     }
 
-    private String appendRequestBodyPart(String requestBody, String requestOptions, boolean isJsonParsingRequired, String[] consumes) {
+    protected String appendRequestBodyPart(String requestBody, String requestOptions, boolean isJsonParsingRequired, String[] consumes) {
         if (isJsonParsingRequired) {
             ModelSerializerExtension modelSerializerExtension = findModelSerializerExtension(consumes);
             requestOptions += ", " + modelSerializerExtension.generateSerializationCode(requestBody) + " ";
@@ -185,7 +185,7 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
         return requestOptions;
     }
 
-    private String composeRequestOptions(String requestHeadersVar, String requestParamsVar, boolean isRequestParamDefined, boolean isRequestHeaderDefined, String requestOptions, boolean isRequestOptionsRequired) {
+    protected String composeRequestOptions(String requestHeadersVar, String requestParamsVar, boolean isRequestParamDefined, boolean isRequestHeaderDefined, String requestOptions, boolean isRequestOptionsRequired) {
         if (isRequestHeaderDefined || isRequestParamDefined || isRequestOptionsRequired) {
             List<String> requestOptionsList = new ArrayList<>();
             if (isRequestHeaderDefined) {
@@ -205,7 +205,7 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
     }
 
 
-    private String getContentTypeHeaderFromRequestMapping(String httpMethod, RequestMapping requestMapping, boolean isRequestBodyDefined) {
+    protected String getContentTypeHeaderFromRequestMapping(String httpMethod, RequestMapping requestMapping, boolean isRequestBodyDefined) {
         if (isPutOrPostMethod(httpMethod) && isRequestBodyDefined) {
             String contentType = getContentType(requestMapping.consumes());
             return "new HttpHeaders().set('Content-type'," + " '" + contentType + "');";
@@ -213,7 +213,7 @@ public class Angular4ImplementationGenerator extends BaseImplementationGenerator
         return "";
     }
 
-    private boolean isPutOrPostMethod(String httpMethod) {
+    protected boolean isPutOrPostMethod(String httpMethod) {
         return "PUT".equals(httpMethod) || "POST".equals(httpMethod);
     }
 

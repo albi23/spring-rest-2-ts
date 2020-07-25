@@ -2,7 +2,10 @@ package com.blueveery.springrest2ts.converters;
 
 import com.blueveery.springrest2ts.implgens.EmptyImplementationGenerator;
 import com.blueveery.springrest2ts.naming.ClassNameMapper;
-import com.blueveery.springrest2ts.tsmodel.*;
+import com.blueveery.springrest2ts.tsmodel.TSElementAlias;
+import com.blueveery.springrest2ts.tsmodel.TSLiteral;
+import com.blueveery.springrest2ts.tsmodel.TSModule;
+import com.blueveery.springrest2ts.tsmodel.TSUnion;
 
 /**
  * Created by tomek on 08.08.17.

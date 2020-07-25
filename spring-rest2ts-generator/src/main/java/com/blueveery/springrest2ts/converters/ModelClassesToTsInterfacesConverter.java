@@ -9,7 +9,8 @@ import com.blueveery.springrest2ts.tsmodel.TSType;
 import com.blueveery.springrest2ts.tsmodel.generics.TSInterfaceReference;
 
 import java.lang.reflect.AnnotatedType;
-import java.util.*;
+import java.util.List;
+import java.util.SortedSet;
 
 /**
  * Created by tomaszw on 03.08.2017.

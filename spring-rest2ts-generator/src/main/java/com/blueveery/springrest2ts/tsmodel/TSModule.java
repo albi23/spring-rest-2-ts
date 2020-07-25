@@ -1,21 +1,19 @@
 package com.blueveery.springrest2ts.tsmodel;
 
 
+import com.blueveery.springrest2ts.Rest2tsGenerator;
+import com.blueveery.springrest2ts.converters.TypeMapper;
+import com.blueveery.springrest2ts.tsmodel.generics.IParameterizedWithFormalTypes;
+import com.blueveery.springrest2ts.tsmodel.generics.TSClassReference;
+import com.blueveery.springrest2ts.tsmodel.generics.TSFormalTypeParameter;
+import com.blueveery.springrest2ts.tsmodel.generics.TSParameterizedTypeReference;
+import org.slf4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-
-import com.blueveery.springrest2ts.Rest2tsGenerator;
-import com.blueveery.springrest2ts.converters.TypeMapper;
-
-import com.blueveery.springrest2ts.tsmodel.generics.IParameterizedWithFormalTypes;
-import com.blueveery.springrest2ts.tsmodel.generics.TSClassReference;
-import com.blueveery.springrest2ts.tsmodel.generics.TSFormalTypeParameter;
-import com.blueveery.springrest2ts.tsmodel.generics.TSParameterizedTypeReference;
-import org.slf4j.Logger;
 
 import static com.blueveery.springrest2ts.tsmodel.ModuleExtensionType.implementation;
 import static com.blueveery.springrest2ts.tsmodel.ModuleExtensionType.typing;

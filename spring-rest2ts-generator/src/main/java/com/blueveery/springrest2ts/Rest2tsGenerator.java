@@ -1,7 +1,6 @@
 package com.blueveery.springrest2ts;
 
 import com.blueveery.springrest2ts.converters.*;
-import com.blueveery.springrest2ts.extensions.ConversionExtension;
 import com.blueveery.springrest2ts.extensions.ModelConversionExtension;
 import com.blueveery.springrest2ts.extensions.RestConversionExtension;
 import com.blueveery.springrest2ts.filters.JavaTypeFilter;
@@ -17,7 +16,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
